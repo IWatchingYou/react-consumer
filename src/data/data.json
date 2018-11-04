@@ -1,0 +1,275 @@
+{
+  "REQUEST": {
+    "_attributes": {
+      "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+      "xsi:noNamespaceSchemaLocation": "Enquiry.xsd"
+    },
+    "SERVICE": {
+      "_text": "ENQUIRYV4"
+    },
+    "ACTION": {
+      "_text": "A"
+    },
+    "HEADER": {
+      "MEMBER_ID": {
+        "_text": "231"
+      },
+      "USER_ID": {
+        "_text": "CCFUATXML"
+      },
+      "RUN_NO": {
+        "_text": "001"
+      },
+      "TOT_ITEMS": {
+        "_text": "1"
+      }
+    },
+    "MESSAGE": {
+      "ENQUIRY": {
+        "ENQUIRY_TYPE": {
+          "_text": "NA"
+        },
+        "LANGUAGE": {},
+        "PRODUCT_TYPE": {
+          "_text": "AGL"
+        },
+        "NO_OF_APPLICANTS": {
+          "_text": "1"
+        },
+        "ACCOUNT_TYPE": {
+          "_text": "S"
+        },
+        "ENQUIRY_REFERENCE": {
+          "_text": "TESTNG 02112024"
+        },
+        "AMOUNT": {
+          "_text": "140000"
+        },
+        "CURRENCY": {
+          "_text": "USD"
+        },
+        "CONSUMER": {
+          "CAPL": {
+            "_text": "P"
+          },
+          "CID": {
+            "CID1": {
+              "_text": "N"
+            },
+            "CID2": {
+              "_text": "061473120"
+            },
+            "CID3": {
+              "CID3D": {
+                "_text": "18"
+              },
+              "CID3M": {
+                "_text": "12"
+              },
+              "CID3Y": {
+                "_text": "2022"
+              }
+            }
+          },
+          "CDOB": {
+            "CDBD": {
+              "_text": "07"
+            },
+            "CDBM": {
+              "_text": "08"
+            },
+            "CDBY": {
+              "_text": "1981"
+            }
+          },
+          "CPLB": {
+            "CPLBC": {
+              "_text": "KHM"
+            },
+            "CPLBP": {
+              "_text": "03"
+            },
+            "CPLBD": {
+              "_text": "0301"
+            },
+            "CPLBCM": {
+              "_text": "030107"
+            }
+          },
+          "CGND": {
+            "_text": "F"
+          },
+          "CMAR": {
+            "_text": "M"
+          },
+          "CNAT": {
+            "_text": "KHM"
+          },
+          "CNAM": {
+            "CNMFA": {
+              "_attributes": {
+                "lang": "kh"
+              },
+              "_text": "សេម"
+            },
+            "CNM1A": {
+              "_attributes": {
+                "lang": "kh"
+              },
+              "_text": "ចន្ថា"
+            },
+            "CNM2A": {
+              "_attributes": {
+                "lang": "kh"
+              }
+            },
+            "CNM3A": {
+              "_attributes": {
+                "lang": "kh"
+              }
+            },
+            "CNMFE": {
+              "_text": "SEM"
+            },
+            "CNM1E": {
+              "_text": "CHANTHA"
+            },
+            "CNM2E": {},
+            "CNM3E": {}
+          },
+          "CEML": {
+            "_text": "78A, Asd asdqwe"
+          },
+          "CADR": {
+            "CADT": {
+              "_text": "RESID"
+            },
+            "CADPR": {
+              "_text": "03"
+            },
+            "CADDS": {
+              "_text": "0301"
+            },
+            "CADCM": {
+              "_text": "030107"
+            },
+            "CADVL": {
+              "_text": "03010701"
+            },
+            "CAD1A": {
+              "_attributes": {
+                "lang": "kh"
+              }
+            },
+            "CAD2A": {
+              "_attributes": {
+                "lang": "kh"
+              }
+            },
+            "CAD1E": {},
+            "CAD2E": {},
+            "CAD7": {},
+            "CAD8E": {},
+            "CAD8A": {
+              "_attributes": {
+                "lang": "kh"
+              }
+            },
+            "CAD9": {
+              "_text": "KHM"
+            },
+            "CADH": {},
+            "CADS": {}
+          },
+          "CCNT": {
+            "CCN1": {
+              "_text": "M"
+            },
+            "CCN2": {
+              "_text": "855"
+            },
+            "CCN3": {},
+            "CCN4": {
+              "_text": "011686259"
+            },
+            "CCN5": {}
+          },
+          "CEMP": {
+            "ETYP": {
+              "_text": "C"
+            },
+            "ESLF": {
+              "_text": "Y"
+            },
+            "EOCA": {
+              "_attributes": {
+                "lang": "kh"
+              }
+            },
+            "EOCE": {
+              "_text": "seller"
+            },
+            "ELEN": {
+              "_text": "10"
+            },
+            "ETMS": {
+              "_text": "700"
+            },
+            "ECURR": {
+              "_text": "USD"
+            },
+            "ENMA": {
+              "_attributes": {
+                "lang": "kh"
+              }
+            },
+            "ENME": {
+              "_text": "none"
+            },
+            "EADR": {
+              "EADT": {
+                "_text": "WORK"
+              },
+              "EADP": {
+                "_text": "03"
+              },
+              "EADD": {
+                "_text": "0301"
+              },
+              "EADC": {
+                "_text": "030107"
+              },
+              "EADV": {
+                "_text": "03010701"
+              },
+              "EAD1A": {
+                "_attributes": {
+                  "lang": "kh"
+                }
+              },
+              "EAD2A": {
+                "_attributes": {
+                  "lang": "kh"
+                }
+              },
+              "EAD1E": {},
+              "EAD2E": {},
+              "EAD7": {},
+              "EAD8E": {},
+              "EAD8A": {
+                "_attributes": {
+                  "lang": "kh"
+                }
+              },
+              "EAD9": {
+                "_text": "KHM"
+              },
+              "EADH": {},
+              "EADS": {}
+            }
+          }
+        }
+      }
+    }
+  }
+}
