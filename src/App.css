@@ -8,7 +8,6 @@ body, html{
   font-family: 'Slabo 27px', serif;
   font-size: 9pt !important;
 }
-
 .form-control {
   font-family: 'Slabo 27px', serif;
   font-size: 9pt !important;
@@ -26,7 +25,6 @@ body, html{
   transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
   -webkit-transition: all .5s;
 }
-
 .btn {
   font-family: 'Slabo 27px', serif;
   font-size: 9pt !important;
@@ -74,7 +72,7 @@ body, html{
   position: fixed;
   top: 0;
   left: 0;
-  width: 13%;
+  width: 220px;
   background-color: #263238;
   height: 100%;
   box-shadow: 0px 0px 1px 1px #263238;
@@ -83,8 +81,9 @@ body, html{
   justify-content: center;
 }
 .contact{
-  margin-left: 15%;
+  margin-left: 225px;
   overflow: scroll;
+  overflow-x: hidden;
 }
 ::-webkit-scrollbar{
   background: transparent;
@@ -127,4 +126,22 @@ i{
 }
 .btn-visible:hover i{
   color: #ff4255 !important;
+}
+table{
+  padding: 0 !important;
+  font-size: 9pt;
+  border-collapse: collapse;
+  border-radius: 5px;
+  overflow: hidden;
+}
+table thead{
+  background-color: #495057;
+  color: #f3f3f3;
+}
+.pagination{
+  display: flex;
+  padding-left: 0;
+  list-style: none;
+  border-radius: .25rem;
+  height: calc(1.75rem + 2px);
 }

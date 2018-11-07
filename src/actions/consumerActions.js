@@ -3,11 +3,15 @@ import {
   FETCT_NEW_CONSUMER,
   FETCH_DELETE_CONSUMER,
   FETCH_UPDATE_CONSUMER,
-  FETCH_CONSUMER_ID
+  FETCH_CONSUMER_ID,
+  FETCH_COUNT,
+  FETCH_SEARCH
 } from './types';
 
-export const fetchConsumers = () => dispatch => {
-  fetch('http://localhost:9999/api/consumer', {
+const consumerURI = 'http://192.168.111.143:9999/api/';
+
+export const fetchConsumers = (page) => dispatch => {
+  fetch(`${consumerURI}consumers/${page}`, {
     method: 'GET'
   })
     .then(res => res.json())
@@ -19,7 +23,7 @@ export const fetchConsumers = () => dispatch => {
 }
 
 export const fetchConsumersById = (id) => dispatch => {
-  fetch(`http://localhost:9999/api/consumer/${id}`, {
+  fetch(`${consumerURI}consumer/${id}`, {
     method: 'GET'
   })
     .then(res => res.json())
@@ -31,7 +35,7 @@ export const fetchConsumersById = (id) => dispatch => {
 }
 
 export const fetchNewConstumers = (postData) => dispatch =>{
-  fetch('http://localhost:9999/api/consumer', {
+  fetch(`${consumerURI}consumer`, {
     method: 'POST',
     headers: {
       'content-type': 'application/json'
@@ -48,7 +52,7 @@ export const fetchNewConstumers = (postData) => dispatch =>{
 
 export const fetchDeleteConsumer = (id) => dispatch =>{
   console.log(id);
-  fetch(`http://localhost:9999/api/consumer/${id}`, {
+  fetch(`${consumerURI}consumer/${id}`, {
     method: 'DELETE',
   })
   .then(() => dispatch({
@@ -58,7 +62,7 @@ export const fetchDeleteConsumer = (id) => dispatch =>{
 }
 
 export const fetchUpdateConsumer = (id, postData) => dispatch =>{
-  fetch(`http://localhost:9999/api/consumer/${id}`, {
+  fetch(`${consumerURI}consumer/${id}`, {
     method: 'PUT',
     headers: {
       'content-type': 'application/json'
@@ -70,4 +74,24 @@ export const fetchUpdateConsumer = (id, postData) => dispatch =>{
     type: FETCH_UPDATE_CONSUMER,
     payload: consumer
   }));
+}
+
+export const fetchCount = () => dispatch =>{
+  fetch(`${consumerURI}consumerCount`, {
+    method: 'GET'
+  })
+  .then(res => res.json())
+  .then(count => dispatch({
+    type: FETCH_COUNT,
+    payload: count
+  }));
+}
+
+export const fetchsearch = (query) => dispatch =>{
+  fetch(`${consumerURI}consumerfind?name=${query}`)
+  .then(res => res.json())
+  .then(consumer => dispatch({
+    type: FETCH_SEARCH,
+    payload: consumer
+  }))
 }

@@ -62,7 +62,7 @@ class Contact extends Component{
             </div>
           </div> */}
 
-          <div className="col-md-3">
+          <div className="col-md-12">
             <div className="form-group">
               <label>Phone Number *</label>
               <input className="form-control" value={this.props.phone_number} onChange={this.props.ChangePhoneNumber} required/>

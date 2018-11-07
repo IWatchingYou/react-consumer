@@ -75,9 +75,9 @@ class Consumer extends Component{
           </div>
 
           <div className="col-md-3">
-            <div className="form-group" value={this.props.birth_date} onChange={this.props.ChangeBirth_Date}>
+            <div className="form-group">
               <label>Birth Date *</label>
-              <input className="form-control" type="date" required/>
+              <input className="form-control" type="date" required value={this.props.birth_date} onChange={this.props.ChangeBirth_Date}/>
             </div>
           </div>
 

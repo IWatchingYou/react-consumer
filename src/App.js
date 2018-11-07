@@ -18,7 +18,7 @@ class App extends Component {
           <div className="nav-left">
             <ul>
               <li><Link to={'/'} className="text-white"><i className="fab fa-wpforms"></i> Consumer Enquiry</Link></li>
-              <li><Link to={'/list'} className="text-white"><i className="fas fa-list"></i> Consumer Informat</Link></li>
+              <li><Link to={'/list'} className="text-white"><i className="fas fa-list"></i> Consumer Information</Link></li>
             </ul>
           </div>
           <div className="contact">

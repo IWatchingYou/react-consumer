@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import { fetchUpdateConsumer, fetchConsumersById } from '../actions/consumerActions';
+import { fetchUpdateConsumer, fetchConsumers } from '../actions/consumerActions';
 
 import Enquiry from '../components/Enquirys/Enquiry';
 import Consumer from '../components/Consumers/Consumer';
@@ -260,73 +260,75 @@ class EnquiryformUpdate extends Component{
   onSubmit = (event) =>{
     event.preventDefault();
     
-    this.props.fetchUpdateConsumer(this.state);
+    this.props.fetchUpdateConsumer(this.props.match.params.id ,this.state);
+    setTimeout(()=>{
+      this.props.fetchConsumers(1);
+    },500)
+    this.props.history.push('/list');
   }
 
   componentWillMount(){
     if(this.props.match.params.id !== undefined){
-      // fetch(`http://192.168.111.143:9999/api/consumer/${this.props.match.params.id}`, {
-      //   method: 'GET'
-      // })
-      //   .then(res => res.json())
-      //   .then(consumer =>{
-      //   this.setState({
-      //     enq_type: consumer.enq_type,
-      //     pro_type: consumer.pro_type,
-      //     acc_type: consumer.acc_type,
-      //     number_app: consumer.number_app,
-      //     member: consumer.member,
-      //     amount: consumer.amount,
-      //     currency: consumer.currency,
-      //     scorecard: consumer.scorecard,
-      //     app_type: consumer.app_type,
-      //     id_type: consumer.id_type,
-      //     id_number: consumer.id_number,
-      //     id_expire: consumer.id_expire,
-      //     gender: consumer.gender,
-      //     marital_status: consumer.marital_status,
-      //     dob: consumer.dob,
-      //     pob_prov: consumer.pob_prov,
-      //     pob_dist: consumer.pob_dist,
-      //     pob_comm: consumer.pob_comm,
-      //     faname_eng: consumer.faname_eng,
-      //     finame_eng: consumer.finame_eng,
-      //     faname_khm: consumer.faname_khm,
-      //     finame_khm: consumer.finame_khm,
-      //     email_address: consumer.email_address,
-      //     add_type: consumer.add_type,
-      //     province: consumer.province,
-      //     district: consumer.district,
-      //     commune: consumer.commune,
-      //     village: consumer.village,
-      //     street: consumer.street,
-      //     house: consumer.house,
-      //     other_vill_eng: consumer.other_vill_eng,
-      //     other_vill_khm: consumer.other_vill_khm,
-      //     phone_number: consumer.phone_number,
-      //     emp_type: consumer.emp_type,
-      //     emp_self: consumer.emp_self,
-      //     lenght: consumer.lenght,
-      //     occupation: consumer.occupation,
-      //     emp_name: consumer.emp_name,
-      //     salary: consumer.salary,
-      //     emp_currency: consumer.emp_currency,
-      //     emp_add_type: consumer.emp_add_type,
-      //     emp_prov: consumer.emp_prov,
-      //     emp_dist: consumer.emp_dist,
-      //     emp_comm: consumer.emp_comm,
-      //     emp_vill: consumer.emp_vill,
-      //     emp_street: consumer.emp_street,
-      //     emp_house: consumer.emp_house,
-      //     empother_vill_eng: consumer.empother_vill_eng,
-      //     empother_vill_khm: consumer.empother_vill_khm
-      //   })});
-      this.props.fetchConsumersById(this.props.match.params.id);
+      fetch(`http://192.168.111.143:9999/api/consumer/${this.props.match.params.id}`, {
+        method: 'GET'
+      })
+        .then(res => res.json())
+        .then(consumer =>{
+        this.setState({
+          enq_type: consumer.enq_type,
+          pro_type: consumer.pro_type,
+          acc_type: consumer.acc_type,
+          number_app: consumer.number_app,
+          member: consumer.member,
+          amount: consumer.amount,
+          currency: consumer.currency,
+          scorecard: consumer.scorecard,
+          app_type: consumer.app_type,
+          id_type: consumer.id_type,
+          id_number: consumer.id_number,
+          id_expire: `${consumer.id_expire.split('-')[0]}-${consumer.id_expire.split('-')[1]}-${consumer.id_expire.split('-')[2].substring(0,2)}`,
+          gender: consumer.gender,
+          marital_status: consumer.marital_status,
+          dob: `${consumer.dob.split('-')[0]}-${consumer.dob.split('-')[1]}-${consumer.dob.split('-')[2].substring(0,2)}`,
+          pob_prov: consumer.pob_prov,
+          pob_dist: consumer.pob_dist,
+          pob_comm: consumer.pob_comm,
+          faname_eng: consumer.faname_eng,
+          finame_eng: consumer.finame_eng,
+          faname_khm: consumer.faname_khm,
+          finame_khm: consumer.finame_khm,
+          email_address: consumer.email_address,
+          add_type: consumer.add_type,
+          province: consumer.province,
+          district: consumer.district,
+          commune: consumer.commune,
+          village: consumer.village,
+          street: consumer.street,
+          house: consumer.house,
+          other_vill_eng: consumer.other_vill_eng,
+          other_vill_khm: consumer.other_vill_khm,
+          phone_number: consumer.phone_number,
+          emp_type: consumer.emp_type,
+          emp_self: consumer.emp_self,
+          lenght: consumer.lenght,
+          occupation: consumer.occupation,
+          emp_name: consumer.emp_name,
+          salary: consumer.salary,
+          emp_currency: consumer.emp_currency,
+          emp_add_type: consumer.emp_add_type,
+          emp_prov: consumer.emp_prov,
+          emp_dist: consumer.emp_dist,
+          emp_comm: consumer.emp_comm,
+          emp_vill: consumer.emp_vill,
+          emp_street: consumer.emp_street,
+          emp_house: consumer.emp_house,
+          empother_vill_eng: consumer.empother_vill_eng,
+          empother_vill_khm: consumer.empother_vill_khm
+        })});
     }
   }
 
   render(){
-    const consumer = this.props.consumer;
     return(
       <form onSubmit={this.onSubmit}>
       <div className="container-flud">
@@ -334,14 +336,14 @@ class EnquiryformUpdate extends Component{
         <hr/>
         <h5>Consumer Details</h5>
         <Enquiry 
-          enquiry_type={consumer.enq_type}
-          product_type={consumer.pro_type}
-          account_type={consumer.acc_type}
-          application_no={consumer.number_app}
-          member={consumer.member}
-          amount={consumer.amount}
-          currency={consumer.currency}
-          scorecard={consumer.scorecard}
+          enquiry_type={this.state.enq_type}
+          product_type={this.state.pro_type}
+          account_type={this.state.acc_type}
+          application_no={this.state.number_app}
+          member={this.state.member}
+          amount={this.state.amount}
+          currency={this.state.currency}
+          scorecard={this.state.scorecard}
           ChangeEnquiryType={this.ChangeEnquiryType}
           ChangeProductType={this.ChangeProductType}
           ChangeAccountType={this.ChangeAccountType}
@@ -353,21 +355,21 @@ class EnquiryformUpdate extends Component{
         />
         <hr/>
         <Consumer
-          application_type={consumer.app_type}
-          id_type={consumer.id_type}
-          id_number={consumer.id_number}
-          id_expiry_date={consumer.id_expire}
-          gender={consumer.gender}
-          marital_status={consumer.marital_status}
-          birth_date={consumer.dob}
-          pbp={consumer.pob_prov}
-          pbd={consumer.pob_dist}
-          pbc={consumer.pob_comm}
-          faname_eng={consumer.faname_eng}
-          finame_eng={consumer.finame_eng}
-          faname_khm={consumer.faname_khm}
-          finame_khm={consumer.finame_khm}
-          email_address={consumer.email_address}
+          application_type={this.state.app_type}
+          id_type={this.state.id_type}
+          id_number={this.state.id_number}
+          id_expiry_date={this.state.id_expire}
+          gender={this.state.gender}
+          marital_status={this.state.marital_status}
+          birth_date={this.state.dob}
+          pbp={this.state.pob_prov}
+          pbd={this.state.pob_dist}
+          pbc={this.state.pob_comm}
+          faname_eng={this.state.faname_eng}
+          finame_eng={this.state.finame_eng}
+          faname_khm={this.state.faname_khm}
+          finame_khm={this.state.finame_khm}
+          email_address={this.state.email_address}
           ChangeApplication_Type={this.ChangeApplication_Type}
           ChangeID_Type={this.ChangeID_Type}
           ChangeID_Number={this.ChangeID_Number}
@@ -386,15 +388,15 @@ class EnquiryformUpdate extends Component{
         />
         <hr/>
         <Address
-          address_type={consumer.add_type}
-          province={consumer.province}
-          district={consumer.district}
-          commune={consumer.commune}
-          village={consumer.village}
-          street={consumer.street}
-          house={consumer.house}
-          village_other_khm={consumer.village_other_khm}
-          village_other_eng={consumer.village_other_eng}
+          address_type={this.state.add_type}
+          province={this.state.province}
+          district={this.state.district}
+          commune={this.state.commune}
+          village={this.state.village}
+          street={this.state.street}
+          house={this.state.house}
+          village_other_khm={this.state.other_vill_khm}
+          village_other_eng={this.state.other_vill_eng}
           ChangeAddress_Type={this.ChangeAddress_Type}
           ChangeProvince={this.ChangeProvince}
           ChangeDistrict={this.ChangeDistrict}
@@ -407,27 +409,27 @@ class EnquiryformUpdate extends Component{
         />
         <hr/>
         <Contact
-          phone_number={consumer.phone_number}
+          phone_number={this.state.phone_number}
           ChangePhoneNumber={this.ChangePhoneNumber}
         />
         <hr/>
         <Occupation
-          employment_type={consumer.emp_type}
-          self_employed={consumer.emp_self}
-          lenght={consumer.lenght}
-          occupation={consumer.occupation}
-          employer_name={consumer.emp_name}
-          salary={consumer.salary}
-          currency={consumer.emp_currency}
-          emp_address={consumer.emp_add_type}
-          emp_prov={consumer.emp_prov}
-          emp_dist={consumer.emp_dist}
-          emp_comm={consumer.emp_comm}
-          emp_vill={consumer.emp_vill}
-          emp_street={consumer.emp_street}
-          emp_house={consumer.emp_house}
-          emp_vill_eng={consumer.empother_vill_eng}
-          emp_vill_khm={consumer.empother_vill_khm}
+          employment_type={this.state.emp_type}
+          self_employed={this.state.emp_self}
+          lenght={this.state.lenght}
+          occupation={this.state.occupation}
+          employer_name={this.state.emp_name}
+          salary={this.state.salary}
+          currency={this.state.emp_currency}
+          emp_address={this.state.emp_add_type}
+          emp_prov={this.state.emp_prov}
+          emp_dist={this.state.emp_dist}
+          emp_comm={this.state.emp_comm}
+          emp_vill={this.state.emp_vill}
+          emp_street={this.state.emp_street}
+          emp_house={this.state.emp_house}
+          emp_vill_eng={this.state.empother_vill_eng}
+          emp_vill_khm={this.state.empother_vill_khm}
           onChangeEmploymentType={this.onChangeEmploymentType}
           onChangeSelfEmployed={this.onChangeSelfEmployed}
           onChangeLenght={this.onChangeLenght}
@@ -453,8 +455,4 @@ class EnquiryformUpdate extends Component{
   }
 }
 
-const mapStateToProps = state =>({
-  consumer: state.consumers.item
-})
-
-export default connect(mapStateToProps, { fetchUpdateConsumer, fetchConsumersById })(EnquiryformUpdate);
+export default connect(null, { fetchUpdateConsumer, fetchConsumers })(EnquiryformUpdate);

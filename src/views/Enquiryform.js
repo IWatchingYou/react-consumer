@@ -261,7 +261,65 @@ class Enquiryform extends Component{
   onSubmit = (event) =>{
     event.preventDefault();
     
-    this.props.fetchNewConstumers(this.state);
+    try{
+      this.props.fetchNewConstumers(this.state)
+      alert('consumer was save.');
+      this.setState({
+        enq_type: 'NA',
+        pro_type: '',
+        acc_type: 'J',
+        number_app: '1',
+        member: '',
+        amount: '',
+        currency: 'USD',
+        scorecard: 'MFI01',
+        app_type: 'P',
+        id_type: 'N',
+        id_number: '',
+        id_expire: '',
+        gender: 'M',
+        marital_status: 'M',
+        dob: '',
+        pob_prov: '',
+        pob_dist: '',
+        pob_comm: '',
+        faname_eng: '',
+        finame_eng: '',
+        faname_khm: '',
+        finame_khm: '',
+        email_address: '',
+        add_type: 'RESID',
+        province: '',
+        district: '',
+        commune: '',
+        village: '',
+        street: '',
+        house: '',
+        other_vill_eng: '',
+        other_vill_khm: '',
+        phone_number: '',
+        emp_type: '',
+        emp_self: '',
+        lenght: '',
+        occupation: '',
+        emp_name: '',
+        salary: '',
+        emp_currency: 'USD',
+        emp_add_type: '',
+        emp_prov: '',
+        emp_dist: '',
+        emp_comm: '',
+        emp_vill: '',
+        emp_street: '',
+        emp_house: '',
+        empother_vill_eng: '',
+        empother_vill_khm: ''
+      })
+    }
+    catch(err){
+      alert('consumer was unsave.');
+      console.log(err);
+    }
   }
 
   render(){

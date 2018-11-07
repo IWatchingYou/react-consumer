@@ -3,13 +3,16 @@ import {
   FETCT_NEW_CONSUMER,
   FETCH_DELETE_CONSUMER,
   FETCH_UPDATE_CONSUMER,
-  FETCH_CONSUMER_ID
+  FETCH_CONSUMER_ID,
+  FETCH_COUNT,
+  FETCH_SEARCH
 } from "../actions/types";
 
 const initialState = {
   items: [],
   item: {},
   itemkill: {},
+  count: []
 }
 
 export default (state = initialState, action) => {
@@ -39,6 +42,26 @@ export default (state = initialState, action) => {
         ...state,
         item: action.payload
       };
+    case FETCH_SEARCH:
+      return {
+        ...state,
+        items: action.payload
+      }
+    case FETCH_COUNT:
+      let count = action.payload.count/10;
+      if( (count % 1) !== 0 ){
+        count = count + 1
+      }
+
+      let page = [];
+      for(let i = 1; i < count.toFixed(2); i++){
+        page.push(i);
+      }
+
+      return {
+        ...state,
+        count: page
+      }
     default:
       return state;
   }
